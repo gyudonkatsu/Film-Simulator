@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image, ImageEnhance, ImageOps
 
+# assets 폴더 안에 logo.png 파일이 있다고 가정
 logo = Image.open("assets/logo.png")
 
 # 필터 함수 3개 간단히 구현
@@ -32,7 +33,9 @@ def apply_filter(image, filter_name):
         return image
 
 # Streamlit UI 시작
-st.title("🎞️ Film Simulator Simple App")
+
+st.image(logo, width=150)  # 여기서 로고 이미지를 띄워줌
+st.title("Arthouse - Film Filters")
 
 uploaded_file = st.file_uploader("사진 업로드 (jpg, png)", type=["jpg", "png"])
 
@@ -46,7 +49,6 @@ if uploaded_file is not None:
         filtered_img = apply_filter(image, filter_name)
         st.image(filtered_img, caption=f"{filter_name} 필터 적용 결과", use_column_width=True)
 
-        # 다운로드 버튼
         import io
         buf = io.BytesIO()
         filtered_img.save(buf, format="JPEG")
