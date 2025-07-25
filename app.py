@@ -1,6 +1,8 @@
 import streamlit as st
 from PIL import Image, ImageEnhance, ImageOps
 
+logo = Image.open("assets/Logo.png")
+
 # 필터 함수 3개 간단히 구현
 def kodak_style(image):
     enhancer = ImageEnhance.Color(image)
